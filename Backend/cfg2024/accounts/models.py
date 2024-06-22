@@ -58,17 +58,21 @@ class Project_Items(models.Model):
     ]
     project_region = models.CharField(max_length=20, choices=region_choices)
     assigned_to = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    cycle_choices=[
+        ('jan', 'Jan'),
+        ('july', 'July'),
+    ]
+    cycle=models.CharField(max_length=50,choices=cycle_choices)
+    donation_amt=models.IntegerField()
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
+
 
     #project_region = models.CharField(max_length=50)
     def __str__(self):
         return self.project_name
 
 class ProjectActionTasks(models.Model):
-    # name=models.ForeignKey(Project_Items, on_delete=models.CASCADE)
-
-    # action_item=
-    # url=
-    pass
+    name=models.ForeignKey(Project_Items, on_delete=models.CASCADE)
         
 
 
