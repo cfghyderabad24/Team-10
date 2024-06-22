@@ -64,6 +64,14 @@ class Project_Items(models.Model):
         max_length=20, choices=region_choices, null=True, blank=True
     )
     assigned_to = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    cycle_choices=[
+        ('jan', 'Jan'),
+        ('july', 'July'),
+    ]
+    cycle=models.CharField(max_length=50,choices=cycle_choices)
+    donation_amt=models.IntegerField()
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
+
 
     # project_region = models.CharField(max_length=50)
     def __str__(self):
