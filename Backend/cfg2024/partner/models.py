@@ -70,7 +70,7 @@ class PartnerProject(models.Model):
     donation_amt = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"{self.proj_name} assigned to {self.assigned_to}"
+        return f"{self.project_name} assigned to {self.assigned_to}"
     
 class PartnerProjTask(models.Model):
     DOC_ITEMS_CHOICES = [
