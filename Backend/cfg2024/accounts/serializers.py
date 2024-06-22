@@ -16,8 +16,13 @@ class Action_ItemsSerializer(serializers.ModelSerializer):
         model = Action_Items
         fields = '__all__'
 
-class ProjectActionTasksSerializer(serializers.ModelSerializer):
+class ProjectItemsSerializer(serializers.ModelSerializer):
+    organisation_name = serializers.SerializerMethodField()
+
     class Meta:
-        model = ProjectActionTasks
-        fields = '__all__'
+        model = Project_Items
+        fields = ['project_name', 'organisation_name', 'donation_amt']
+
+    def get_organisation_name(self, obj):
+        return obj.organisation.organisation_name if obj.organisation else None
 
