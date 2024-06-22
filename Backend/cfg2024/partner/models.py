@@ -2,7 +2,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser,Permission, Group
 from accounts.models import *
 from django.utils.translation import gettext_lazy as _
+from accounts.models import User
 
+
+class PartnerLogin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.user.username
 
 class CustomUser(AbstractUser):
     DOC_CYCLE_CHOICES = [

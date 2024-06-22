@@ -1,13 +1,23 @@
 from rest_framework import serializers
-from .models import User
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
-class Organisation(serializers.ModelSerializer):
+class OrganisationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Organisation
+        fields = '__all__'
+
+class Action_ItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Action_Items
+        fields = '__all__'
+
+class ProjectActionTasksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectActionTasks
         fields = '__all__'
 
