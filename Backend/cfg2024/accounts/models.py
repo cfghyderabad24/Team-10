@@ -132,7 +132,7 @@ def send_post_request(sender, instance, created, **kwargs):
             else "No Assigned User"
         )
 
-        endpoint_url = "https://example.com/api/action_tasks/"
+        endpoint_url = "https://httpbin.org/post"
 
         payload = {
             "cycle": cycle,
@@ -250,7 +250,7 @@ def print_project_details_and_send_post(sender, instance, created, **kwargs):
             "organisation_name": organisation_name,
         }
 
-        endpoint_url = "https://example.com/api/project_details/"
+        endpoint_url = "https://httpbin.org/post"
 
         try:
             response = requests.post(endpoint_url, data=payload)
