@@ -78,7 +78,7 @@ class PartnerProjTask(models.Model):
     partner_project = models.ForeignKey(PartnerProject, on_delete=models.CASCADE)
     doc_items = models.CharField(max_length=50, choices=DOC_ITEMS_CHOICES)
     utilizationcertificate_cyclename = models.CharField(max_length=50, blank=True)
-    url = models.URLField(max_length=200)
+    url = models.CharField(max_length=200)
 
     def save(self, *args, **kwargs):
         if self.partner_project.cycle == 'Jan':
