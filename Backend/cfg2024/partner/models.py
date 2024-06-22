@@ -6,6 +6,7 @@ class CustomUser(AbstractUser):
     DOC_CYCLE_CHOICES = [
         ('Jan', 'January'),
         ('Jul', 'July'),
+        ('None', 'None'),
     ]
 
     doc_data = models.TextField()
@@ -19,6 +20,7 @@ class PartnerProject(models.Model):
     CYCLE_CHOICES = [
         ('Jan', 'January'),
         ('Jul', 'July'),
+        ('None', 'None'),
     ]
 
     # proj_name = models.ForeignKey(ProjItem, on_delete=models.CASCADE)
