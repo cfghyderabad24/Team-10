@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet
+from .views import *
 
 router = DefaultRouter()
 router.register('users', UserViewSet)
@@ -8,4 +8,6 @@ router.register('users', UserViewSet)
 
 urlpatterns = [
     path('login/', include(router.urls)),
+    path('login/check-data/', check_data, name='check_data'),
+    path('project-items/', ProjectItemsListView.as_view(), name='project_items_list'),
 ]
