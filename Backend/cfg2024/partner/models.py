@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser,Permission, Group
 from accounts.models import *
 from django.utils.translation import gettext_lazy as _
 from accounts.models import User
+from django.conf import settings
 
 
 class PartnerLogin(models.Model):
@@ -55,7 +56,8 @@ class PartnerProject(models.Model):
         ('Jul', 'July'),
         ('None', 'None'),
     ]
-
+    project_name = models.ForeignKey(Project_Items, on_delete=models.CASCADE,blank=True, null=True)
+    assigned_to = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     # proj_name = models.ForeignKey(ProjItem, on_delete=models.CASCADE)
     # assigned_to = models.ForeignKey(
     #     settings.AUTH_USER_MODEL, 
