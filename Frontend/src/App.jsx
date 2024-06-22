@@ -5,6 +5,7 @@ import { Signin } from "./pages/SignIn";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Check } from "./components/check";
 import { ProjectDetails } from "./components/ProjectDetails";
+import { Profile } from "./components/Profile";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           {/* <Route path="/" element={<Check />} /> */}
           <Route path="/" element={<ProtectedRoute />} />
           <Route path="/project/:projectId" element={<ProjectDetails />} />
+          <Route path="/Profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </>
