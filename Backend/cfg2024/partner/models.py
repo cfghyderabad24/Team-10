@@ -62,7 +62,7 @@ class PartnerProject(models.Model):
     #     limit_choices_to={'role__name': 'partner_org'}, 
     #     on_delete=models.CASCADE
     # )
-    cycle = models.CharField(max_length=9, choices=CYCLE_CHOICES)
+    cycle = models.CharField(max_length=9, choices=CYCLE_CHOICES, default='default_value')
     donation_amt = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -78,7 +78,7 @@ class PartnerProjTask(models.Model):
     partner_project = models.ForeignKey(PartnerProject, on_delete=models.CASCADE)
     doc_items = models.CharField(max_length=50, choices=DOC_ITEMS_CHOICES)
     utilizationcertificate_cyclename = models.CharField(max_length=50, blank=True)
-    url = models.CharField(max_length=200)
+    url = models.URLField(max_length=200)
 
     def save(self, *args, **kwargs):
         if self.partner_project.cycle == 'Jan':

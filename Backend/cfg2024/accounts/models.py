@@ -67,13 +67,12 @@ class Project_Items(models.Model):
     cycle_choices=[
         ('jan', 'Jan'),
         ('july', 'July'),
+        ('none', 'None')
     ]
-    cycle=models.CharField(max_length=50,choices=cycle_choices)
-    donation_amt=models.IntegerField()
-    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE)
+    cycle=models.CharField(max_length=50,choices=cycle_choices, null=True, blank=True)
+    donation_amt=models.IntegerField(null=True,blank=True)
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, null=True, blank=True)
 
-
-    # project_region = models.CharField(max_length=50)
     def __str__(self):
         return self.project_name
 
@@ -86,11 +85,11 @@ class ProjectActionTasks_Jan(models.Model):
         ("yes", "Yes"),
         ("no", "No"),
     ]
-    action_status = models.CharField(max_length=50, choices=choices_status)
+    action_status = models.CharField(max_length=50, choices=choices_status, null=True, blank=True)
 
 
 class ProjectActionTasks_Jul(models.Model):
-    project_name = models.ForeignKey(Project_Items, on_delete=models.CASCADE)
+    project_name = models.ForeignKey(Project_Items, on_delete=models.CASCADE, null=True, blank=True)
     action_name = models.CharField(max_length=300)
     action_duedate = models.DateField()
     choices_status = [
