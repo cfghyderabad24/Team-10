@@ -46,10 +46,7 @@ class Action_Items(models.Model):
     class Meta:
         constraints = [models.UniqueConstraint(fields=['action_data', 'cycle'], name='unique_user_email_phone')]
         
-class Project_Items(models.Model):
-    project_name=models.CharField(max_length=50)
-    assigned_to=models.ForeignKey(User, on_delete=models.CASCADE)
-    
+
 
 
 
