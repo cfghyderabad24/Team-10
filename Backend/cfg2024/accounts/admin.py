@@ -4,7 +4,7 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(Organisation)
-
+admin.site.register(Action_Items)
 
 
 # class UserAdmin(admin.ModelAdmin):

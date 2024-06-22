@@ -34,6 +34,20 @@ class User(models.Model):
     def __str__(self):
         return self.email
 
+class Action_Items(models.Model):
+    action_data=models.CharField(max_length=550)
+    due_date=models.DateField()
+    cycle_choices=[
+        ('jan', 'Jan'),
+        ('july', 'July'),
+    ]
+    cycle=models.CharField(max_length=50,choices=cycle_choices)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['action_data', 'cycle'], name='unique_user_email_phone')]
+        
+
+
 
 
     
