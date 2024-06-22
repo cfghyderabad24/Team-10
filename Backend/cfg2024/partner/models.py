@@ -4,6 +4,8 @@ from accounts.models import *
 from django.utils.translation import gettext_lazy as _
 from accounts.models import User
 from django.conf import settings
+from django.utils import timezone
+
 
 
 class PartnerLogin(models.Model):
@@ -80,6 +82,7 @@ class PartnerProjTask(models.Model):
     partner_project = models.ForeignKey(PartnerProject, on_delete=models.CASCADE)
     doc_items = models.CharField(max_length=50, choices=DOC_ITEMS_CHOICES)
     utilizationcertificate_cyclename = models.CharField(max_length=50, blank=True)
+    action_duedate = models.DateField(default=timezone.now)
     url = models.URLField(max_length=200)
 
     def save(self, *args, **kwargs):
