@@ -1,5 +1,5 @@
-import { Login } from "../Components/Login";
-import { SideBar } from "../Components/SideBar";
+import { Login } from "../components/Login";
+import { SideBar } from "../components/SideBar";
 import { useMediaQuery } from "react-responsive";
 
 export const Signin = () => {

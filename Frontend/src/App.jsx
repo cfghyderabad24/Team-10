@@ -2,13 +2,12 @@ import "flowbite/dist/flowbite.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { Signup } from "./pages/SignUp";
 import { Signin } from "./pages/SignIn";
-import { ProtectedRoute } from "./Components/ProtectedRoute";
-import { Check } from "./Components/check";
-import { ProjectDetails } from "./Components/ProjectDetails";
-import Home_Org from "./Components/Home_Org"
-import Header from "./Components/Header"
-import ProjectDetails2 from "./Components/ProjectDetails2"
-import Home_RM from "./Components/Home_RM"
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { Check } from "./components/check";
+import Home_Org from "./components/Home_Org"
+// import Header from "./components/Header"
+import ProjectDetails2 from "./components/ProjectDetails2"
+import Home_RM from "./components/Home_RM"
 function App() {
   return (
     <>
