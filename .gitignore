@@ -2,3 +2,4 @@
 migrations
 .env
 **Pipfile*
+**node_modules/*
