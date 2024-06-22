@@ -18,6 +18,11 @@ class Action_ItemsSerializer(serializers.ModelSerializer):
 
 class ProjectActionTasksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProjectActionTasks
+        model = ProjectActionTasks_Jan
+        fields = '__all__'
+
+class ProjectActionTasksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectActionTasks_Jul
         fields = '__all__'
 
