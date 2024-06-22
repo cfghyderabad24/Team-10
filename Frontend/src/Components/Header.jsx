@@ -7,7 +7,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4 shadow-sm bg-white">
+    <div className=" bg-black mx-auto flex justify-between items-center p-4 shadow-sm">
       {/* Left side */}
       <div className="flex items-center">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
@@ -18,20 +18,8 @@ const Header = () => {
         </h1>
       </div>
 
-      {/* Search Input */}
-      <div className="flex items-center justify-center w-full sm:w-auto">
-        <div className="bg-gray-100 rounded-full flex items-center px-4 py-2 w-full sm:w-[400px] lg:w-[500px] shadow-md border border-gray-300">
-          <AiOutlineSearch size={20} className="text-gray-500 mr-2" />
-          <input
-            className="bg-transparent p-2 w-full focus:outline-none text-gray-700"
-            type="text"
-            placeholder="Search Projects"
-          />
-        </div>
-      </div>
-
       {/* Profile button */}
-      <button className="bg-black text-white hidden md:flex items-center py-2 px-5 rounded-full hover:bg-gray-800 transition-colors">
+      <button className="text-white hidden md:flex items-center py-2 px-5 rounded-full hover:bg-gray-900 transition-colors">
         Profile
       </button>
 

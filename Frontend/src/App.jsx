@@ -8,6 +8,7 @@ import Home_Org from "./components/Home_Org"
 // import Header from "./components/Header"
 import ProjectDetails2 from "./components/ProjectDetails2"
 import Home_RM from "./components/Home_RM"
+import { Profile } from "./components/Profile";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/project/:projectId" element={<ProjectDetails2 />} />
           <Route path="/homeNgo" element={<Home_Org />} />
           <Route path="/homeRM" element={<Home_RM />} />
+          <Route path="/Profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
     </>

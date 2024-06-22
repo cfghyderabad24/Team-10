@@ -7,29 +7,25 @@ const Projects = () => {
       id: 1,
       name: "Temp",
       amount: 500000,
-      pendingDocuments: 3,
-      uploadedDocuments: 5,
+      region: "North",
     },
     { 
       id: 2,
-      name: "Temp2",
+      name: "Temp",
       amount: 500000,
-      pendingDocuments: 3,
-      uploadedDocuments: 5,
+      region: "South",
     },
     {
       id: 3,
-      name: "Temp3",
+      name: "Temp",
       amount: 500000,
-      pendingDocuments: 3,
-      uploadedDocuments: 5,
+      region: "East",
     },
     {
       id: 4,
-      name: "Temp4",
+      name: "Temp",
       amount: 500000,
-      pendingDocuments: 3,
-      uploadedDocuments: 5,
+      region: "West",
     },
   ];
 
@@ -38,23 +34,42 @@ const Projects = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6 bg-yellow-50 min-h-screen">
       {activity_data.map((project) => (
         <div
           key={project.id}
-          className="w-full bg-white rounded-lg shadow-lg p-6 mb-6 cursor-pointer hover:shadow-xl transition-shadow duration-200"
+          className="w-full bg-white rounded-lg shadow-lg p-6 mb-6 cursor-pointer hover:shadow-xl transition-shadow duration-200 border border-gray-300"
           onClick={() => handleProjectClick(project.id)}
         >
           <h2 className="text-2xl font-semibold text-gray-900 mb-2">{project.name}</h2>
           <div className="mt-2 text-gray-700">
-            <p className="mb-1"><span className="font-bold">Project Amount:</span> ${project.amount.toLocaleString()}</p>
-            <p className="mb-1"><span className="font-bold">Pending Documents:</span> {project.pendingDocuments}</p>
-            <p className="mb-1"><span className="font-bold">Uploaded Documents:</span> {project.uploadedDocuments}</p>
+            <p className="mb-1">
+              <span className="font-bold text-yellow-600">Project Amount:</span> ${project.amount.toLocaleString()}
+            </p>
+            <p className="mb-1">
+              <span className="font-bold text-yellow-600">Region:</span> ${project.region}
+            </p>
           </div>
         </div>
       ))}
+      <footer className="bg-yellow-100 text-black py-6">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-lg font-semibold">Team 10</h2>
+            <p className="text-sm">© 2023 Team 10. All rights reserved.</p>
+          </div>
+          <div className="flex space-x-6">
+            <a href="/about" className="hover:underline text-black-500">About Us</a>
+            <a href="/contact" className="hover:underline text-black-500">Contact</a>
+            <a href="/privacy" className="hover:underline text-black-500">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
     </div>
   );
 }
 
 export default Projects;
+
