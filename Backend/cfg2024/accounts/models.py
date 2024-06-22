@@ -16,6 +16,7 @@ class User(models.Model):
         ('cry_frontliner', 'Cry Frontliner'),
         ('partner_org', 'Partner Organization')
     ]
+
     region_choices=[
         ('north', 'North'),
         ('west', 'West'),
@@ -45,6 +46,29 @@ class Action_Items(models.Model):
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=['action_data', 'cycle'], name='unique_user_email_phone')]
+
+class Project_Items(models.Model):
+    project_name=models.CharField(max_length=50)
+    region_choices=[
+        ('north', 'North'),
+        ('west', 'West'),
+        ('south', 'South'),
+        ('east', 'East'),
+
+    ]
+    project_region = models.CharField(max_length=20, choices=region_choices)
+    assigned_to = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+    #project_region = models.CharField(max_length=50)
+    def __str__(self):
+        return self.project_name
+
+class ProjectActionTasks(models.Model):
+    # name=models.ForeignKey(Project_Items, on_delete=models.CASCADE)
+
+    # action_item=
+    # url=
+    pass
         
 
 
