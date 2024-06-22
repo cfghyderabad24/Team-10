@@ -1,75 +1,85 @@
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
-import { BsFillCartFill } from "react-icons/bs";
-import { TbTruckDelivery } from "react-icons/tb";
-import { FaWallet } from "react-icons/fa";
-import { MdFavorite, MdHelp } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const Header = (props) => {
+const Header = () => {
   const [nav, setNav] = useState(false);
   const navigate = useNavigate();
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4 shadow-sm">
+    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4 shadow-sm bg-white">
       {/* Left side */}
       <div className="flex items-center">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
           <AiOutlineMenu size={30} />
         </div>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">
-          <span className="font-bold">Team 10</span>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2 font-bold">
+          Team 10
         </h1>
       </div>
 
       {/* Search Input */}
-      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
-        <AiOutlineSearch size={25} />
-        <input
-          className="bg-transparent p-2 w-full focus:outline-none"
-          type="text"
-          placeholder="Search Project"
-        />
+      <div className="flex items-center justify-center w-full sm:w-auto">
+        <div className="bg-gray-100 rounded-full flex items-center px-4 py-2 w-full sm:w-[400px] lg:w-[500px] shadow-md border border-gray-300">
+          <AiOutlineSearch size={20} className="text-gray-500 mr-2" />
+          <input
+            className="bg-transparent p-2 w-full focus:outline-none text-gray-700"
+            type="text"
+            placeholder="Search Projects"
+          />
+        </div>
       </div>
-      {/* Cart button */}
-      <button className="bg-black text-white hidden md:flex items-center py-2 rounded-full border border-black px-5 ">
+
+      {/* Profile button */}
+      <button className="bg-black text-white hidden md:flex items-center py-2 px-5 rounded-full hover:bg-gray-800 transition-colors">
         Profile
       </button>
 
       {/* Mobile Menu */}
-      {/* Overlay */}
-      {nav ? (
-        <div className="bg-black/80 fixed w-full h-screen z-10 top-0 left-0"></div>
-      ) : (
-        ""
+      {nav && (
+        <div className="bg-black/80 fixed w-full h-screen z-10 top-0 left-0" onClick={() => setNav(false)}></div>
       )}
 
       {/* Side drawer menu */}
       <div
-        className={
-          nav
-            ? "fixed top-0 left-0 w-[300px] h-screen bg-white z-10 duration-300"
-            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-white z-10 duration-300"
-        }
+        className={`fixed top-0 left-0 w-[300px] h-screen bg-white z-20 transform ${
+          nav ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out`}
       >
         <AiOutlineClose
-          onClick={() => setNav(!nav)}
+          onClick={() => setNav(false)}
           size={30}
           className="absolute right-4 top-4 cursor-pointer"
         />
-        <h2 className="text-2xl p-4">
-          <span className="font-bold">SideBar</span>
-        </h2>
+        <h2 className="text-2xl p-4 font-bold"></h2>
         <nav>
           <ul className="flex flex-col p-4 text-gray-800">
-            <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-black">
-                   Home
+            <li
+              className="text-xl flex cursor-pointer w-full rounded-full p-2 hover:text-white hover:bg-black transition-colors"
+              onClick={() => {
+                setNav(false);
+                navigate('/home');
+              }}
+            >
+              Home
             </li>
-            <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-black">
-                    About
+            <li
+              className="text-xl flex cursor-pointer w-full rounded-full p-2 hover:text-white hover:bg-black transition-colors"
+              onClick={() => {
+                setNav(false);
+                navigate('/about');
+              }}
+            >
+              About
             </li>
-            <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-black">
-                   Help
+            <li
+              className="text-xl flex cursor-pointer w-full rounded-full p-2 hover:text-white hover:bg-black transition-colors"
+              onClick={() => {
+                setNav(false);
+                navigate('/help');
+              }}
+            >
+              Help
             </li>
           </ul>
         </nav>
@@ -79,5 +89,4 @@ const Header = (props) => {
 };
 
 export default Header;
-
 

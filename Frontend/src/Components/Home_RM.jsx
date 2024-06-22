@@ -14,7 +14,7 @@ const Home_RM = () =>{
   
   return (
     <>
-      <Header int={"RM"}/>
+      <Header/>
       <h1 className='text-2xl font-bold text-gray-800 mb-2'>REGION OVERVIEW</h1>
       <div className="flex justify-between">
           <div className="w-1/2 bg-white rounded-lg shadow-md p-4">

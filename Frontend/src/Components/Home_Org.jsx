@@ -6,7 +6,7 @@ import Projects from './Projects';
 const Home_Org = () =>{
   return (
     <>
-      <Header int={"Ngo"}/>
+      <Header/>
       <Info/>
       <Projects/>
     </>
