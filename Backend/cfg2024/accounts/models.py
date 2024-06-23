@@ -132,7 +132,7 @@ def send_post_request(sender, instance, created, **kwargs):
             else "No Assigned User"
         )
 
-        endpoint_url = "https://example.com/api/action_tasks/"
+        endpoint_url = "https://httpbin.org/post"
 
         payload = {
             "cycle": cycle,
@@ -204,8 +204,58 @@ def print_project_details_and_send_post(sender, instance, created, **kwargs):
 
         try:
             response = requests.post(url, json=data)
-            response.raise_for_status()  # Raise an exception for HTTP errors
+            response.raise_for_status()
             print(response)
             print("POST request successful")
         except requests.exceptions.RequestException as e:
             print(f"Error sending POST request: {e}")
+
+
+@receiver(post_save, sender=Project_Items)
+def print_project_details_and_send_post(sender, instance, created, **kwargs):
+    if created:
+        project_name = instance.project_name
+        donation_amt = instance.donation_amt
+        manager_email = None
+        director_email = None
+
+        if instance.organisation:
+            organisation_name = instance.organisation.organisation_name
+        else:
+            organisation_name = "No Organisation"
+
+        if donation_amt > 500000:
+            try:
+                manager_user = User.objects.get(role="cry_manager")
+                manager_email = manager_user.email
+            except User.DoesNotExist:
+                manager_email = None
+
+        if donation_amt > 10000000:
+            try:
+                director_user = User.objects.get(role="cry_director")
+                director_email = director_user.email
+            except User.DoesNotExist:
+                director_email = None
+
+        print(f"Project Name: {project_name}")
+        print(f"Donation Amount: {donation_amt}")
+        print(f"Organisation Name: {organisation_name}")
+
+        payload = {
+            "project_name": project_name,
+            "donation_amt": donation_amt,
+            "manager_email": manager_email,
+            "director_email": director_email,
+            "organisation_name": organisation_name,
+        }
+
+        endpoint_url = "https://httpbin.org/post"
+
+        try:
+            response = requests.post(endpoint_url, data=payload)
+            response.raise_for_status()
+            print(response)
+            print(f"HTTP POST request sent successfully to {endpoint_url}")
+        except requests.exceptions.RequestException as e:
+            print(f"Failed to send HTTP POST request: {e}")
