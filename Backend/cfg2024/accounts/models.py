@@ -91,6 +91,7 @@ class ProjectActionTasks_Jan(models.Model):
     action_status = models.CharField(
         max_length=50, choices=choices_status, null=True, blank=True
     )
+    url = models.URLField(max_length=200,null=True)
 
 
 class ProjectActionTasks_Jul(models.Model):
@@ -103,6 +104,7 @@ class ProjectActionTasks_Jul(models.Model):
         ("yes", "Yes"),
         ("no", "No"),
     ]
+    url = models.URLField(max_length=200,null=True)
 
 
 @receiver(post_save, sender=ProjectActionTasks_Jan)
