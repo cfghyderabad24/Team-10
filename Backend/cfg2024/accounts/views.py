@@ -6,6 +6,9 @@ from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
 from rest_framework import generics
+from rest_framework.views import APIView
+from django.db.models import Count, Q
+from django.http import response
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -30,3 +33,18 @@ def check_data(request):
 class ProjectItemsListView(generics.ListAPIView):
     queryset = Project_Items.objects.all()
     serializer_class = ProjectItemsSerializer
+
+class RegionStatusCountView(APIView):
+    def get(self, request):
+        # Perform the aggregation
+        result = (
+            Project_Items.objects
+            .filter(projectactiontasks_jul__choices_status='no')
+            .values('project_region')
+            .annotate(no_count=Count('projectactiontasks_jul', filter=Q(projectactiontasks_jul__choices_status='no')))
+            .order_by('project_region')
+        )
+
+        # Serialize the result
+        serializer = RegionStatusCountSerializer(result, many=True)
+        return response(serializer.data)

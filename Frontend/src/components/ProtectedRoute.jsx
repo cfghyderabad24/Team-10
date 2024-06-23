@@ -6,17 +6,18 @@ import { Director } from "./Director";
 import { FrontLiners } from "./FrontLiners";
 
 const roleBasedComponents = {
-  director: Director, // Replace with your actual component
-  org: PartnerOrg, // Replace with your actual component
-  frontliner: FrontLiners, // Replace with your actual component
+  cry_director: Director, // Replace with your actual component
+  partner_org: PartnerOrg, // Replace with your actual component
+  cry_frontliner: FrontLiners, // Replace with your actual component
 };
 
 export const ProtectedRoute = ({ component, ...rest }) => {
   const user = useSelector((state) => state.user);
-  user.role = "org";
+  console.log(user.role);
+  // user.role = "cry_director";
 
   const getComponentForRole = (role) => {
-    return roleBasedComponents[role] || DefaultComponent; // Replace DefaultComponent if needed
+    return roleBasedComponents[role] ; // Replace DefaultComponent if needed
   };
 
   const location = useLocation();
@@ -26,5 +27,6 @@ export const ProtectedRoute = ({ component, ...rest }) => {
   }
 
   const RoleComponent = getComponentForRole(user.role);
+  console.log(RoleComponent);
   return <RoleComponent {...rest} />;
 };

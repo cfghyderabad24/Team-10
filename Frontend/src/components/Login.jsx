@@ -14,18 +14,42 @@ export const Login = () => {
     password: "",
   });
 
+  // async function sendRequest() {
+  //   try {
+  //     console.log(postInputs);
+  //     const response = await axios.post(
+  //       `${BACKEND_URL}/login/check-data/`,
+  //       postInputs
+  //     );
+  //     // console.log(response);
+  //     const  user  = response.data;
+  //     // localStorage.setItem("token", token);
+  //     console.log(user);
+  //     dispatch(setLogin({ user }));
+  //     navigate("/");
+  //   } catch (e) {
+  //     alert("Error while signing in");
+  //   }
+  // }
   async function sendRequest() {
     try {
-      console.log(postInputs);
+      // console.log(postInputs);
       const response = await axios.post(
-        `${BACKEND_URL}/auth/signin`,
+        `${BACKEND_URL}/login/check-data/`,
         postInputs
       );
-      const { user, token } = response.data;
-      // localStorage.setItem("token", token);
-      dispatch(setLogin({ user, token }));
+      // console.log(response.data);  // Log the entire response data
+  
+      // Assuming response directly returns user data
+      const user = response.data;
+      console.log(user);
+      // Dispatch the setLogin action with the user data
+      dispatch(setLogin({ user }));
+      
+      // Assuming `navigate` is from a routing library like react-router-dom
       navigate("/");
-    } catch (e) {
+    } catch (error) {
+      console.error("Error while signing in", error);
       alert("Error while signing in");
     }
   }
@@ -35,12 +59,6 @@ export const Login = () => {
       <div className="w-full max-w-md">
         <div className="px-10">
           <div className="text-3xl font-extrabold">Sign in to your account</div>
-          <div className="text-slate-500">
-            Don't have an account?
-            <Link className="pl-2 underline" to="/signup">
-              Sign up
-            </Link>
-          </div>
         </div>
         <div className="pt-8 px-10">
           <LabelledInput
