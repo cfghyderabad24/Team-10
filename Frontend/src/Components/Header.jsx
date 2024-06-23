@@ -19,7 +19,7 @@ const Header = () => {
       </div>
 
       {/* Profile button */}
-      <button className="text-white hidden md:flex items-center py-2 px-5 rounded-full hover:bg-gray-900 transition-colors">
+      <button className="text-black hidden md:flex items-center py-2 px-5 rounded-full hover:bg-yellow-200 transition-colors">
         Profile
       </button>
 

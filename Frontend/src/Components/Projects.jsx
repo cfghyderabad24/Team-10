@@ -44,10 +44,10 @@ const Projects = () => {
           <h2 className="text-2xl font-semibold text-gray-900 mb-2">{project.name}</h2>
           <div className="mt-2 text-gray-700">
             <p className="mb-1">
-              <span className="font-bold text-yellow-600">Project Amount:</span> ${project.amount.toLocaleString()}
+              <span className="font-bold text-yellow-600">Project Amount:</span> ₹{project.amount.toLocaleString()}
             </p>
             <p className="mb-1">
-              <span className="font-bold text-yellow-600">Region:</span> ${project.region}
+              <span className="font-bold text-yellow-600">Region:</span> {project.region}
             </p>
           </div>
         </div>

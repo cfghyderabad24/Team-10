@@ -21,8 +21,11 @@ class ProjectItemsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project_Items
-        fields = ['project_name', 'organisation_name', 'donation_amt']
+        fields = ['id','project_name', 'organisation_name', 'donation_amt', 'project_region']
 
     def get_organisation_name(self, obj):
         return obj.organisation.organisation_name if obj.organisation else None
 
+class RegionStatusCountSerializer(serializers.Serializer):
+    region = serializers.CharField()
+    no_count = serializers.IntegerField()

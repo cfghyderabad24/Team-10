@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<ProtectedRoute />} />
           <Route path="/project/:projectId" element={<ProjectDetails2 />} />
           <Route path="/homeNgo" element={<Home_Org />} />
-          <Route path="/homeRM" element={<Home_RM />} />
+          {/* <Route path="/homeRM" element={<Home_RM />} /> */}
           <Route path="/Profile" element={<Profile/>}/>
         </Routes>
       </BrowserRouter>
